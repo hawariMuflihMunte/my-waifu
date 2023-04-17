@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path')
 
 module.exports = {
@@ -28,8 +29,18 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'MyWaifu',
       template: path.resolve(__dirname, 'src/template/template.html'),
-      filename: 'index.html'
+      filename: 'index.html',
+      meta: {
+        'viewport': 'width=device-width, initial-scale=1.0',
+        'theme-color': '#007bff'
+      }
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        path.resolve(__dirname, 'src/public'),
+      ]
     })
   ]
 }
