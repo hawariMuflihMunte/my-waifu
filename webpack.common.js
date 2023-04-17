@@ -11,12 +11,16 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
+        include: path.resolve(__dirname, 'src/stylesheet/'),
         use: [
           {
             loader: 'style-loader'
           },
           {
             loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader'
           }
         ]
       }
