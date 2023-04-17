@@ -1,10 +1,12 @@
 class App {
   constructor ({
+    bodyElement,
     appContainer,
     apiUrl,
     bgUrl,
     pageContent
   }) {
+    this._bodyElement = bodyElement
     this._appContainer = appContainer
     this._apiUrl = apiUrl
     this._bgUrl = bgUrl
@@ -13,10 +15,12 @@ class App {
 
   render() {
     this._appContainer.innerHTML = this._pageContent
+    this._bodyElement.style.backgroundImage = `url(${this._bgUrl})`
+    this._bodyElement.style.backgroundSize = `100vw 100vh`
+    this._bodyElement.style.backgroundPosition = 'right top'
+    this._bodyElement.style.backgroundRepeat = 'no-repeat'
 
-    if (this._bgUrl === '' || null) {
-      document.querySelector('body').style.backgroundImage = this._bgUrl
-    }
+    console.log('Successfully render page ✅')
   }
 
   async renderImage () {

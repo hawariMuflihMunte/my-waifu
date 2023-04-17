@@ -7,6 +7,7 @@ import CONFIG from './global/CONFIG'
 import PAGE from './page/page'
 
 const app = new App({
+  bodyElement: document.querySelector('body'),
   appContainer: document.getElementById('app'),
   apiUrl: CONFIG.BASE_API_URL,
   bgUrl: CONFIG.BG_URL,
