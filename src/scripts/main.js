@@ -3,8 +3,8 @@ import '../stylesheet/tailwind.css'
 
 import App from './app'
 import CONFIG from './global/CONFIG'
-
 import PAGE from './page/page'
+import Generator from './generator'
 
 const app = new App({
   bodyElement: document.querySelector('body'),
@@ -16,4 +16,7 @@ const app = new App({
 
 window.addEventListener('DOMContentLoaded', () => {
   app.render()
+  Generator.init({
+    button: document.getElementById(CONFIG.BUTTON_ID)
+  })
 })

@@ -14,16 +14,31 @@ class App {
   }
 
   render() {
-    this._appContainer.innerHTML = this._pageContent
+    // body
     this._bodyElement.style.backgroundImage = `url(${this._bgUrl})`
     this._bodyElement.style.backgroundSize = `100vw 100vh`
     this._bodyElement.style.backgroundPosition = 'right top'
     this._bodyElement.style.backgroundRepeat = 'no-repeat'
 
-    console.log('Successfully render page ✅')
+    // app
+    this._appContainer.innerHTML = this._pageContent
+
+    console.info(
+      '%cApp',
+      `
+        background: rgb(0, 212, 232);
+        color: navy;
+        padding: 2px;
+        border-radius: 3px
+      `,
+      'Successfully render page ✅'
+    )
   }
 
-  async renderImage () {
+  async renderImage ({
+    type = 'sfw',
+    category = 'waifu'
+  }) {
     const createWaifuImage = (src) => {
       const waifuImageContainer = document.createElement('img')
       waifuImageContainer.src = src
@@ -37,7 +52,7 @@ class App {
     }
     
     try {
-      const waifuImageUrl = await fetch(`${this._apiUrl}sfw/waifu`)
+      const waifuImageUrl = await fetch(`${this._apiUrl}${type}/${category}`)
       const waifuImage = await waifuImageUrl.json()
 
       const waifuResult = createWaifuImage(waifuImage.url)
