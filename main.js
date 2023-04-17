@@ -1,44 +1,24 @@
-// Check if service worker is supported and register it
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    this.navigator.serviceWorker.register('sw.js')
-      .then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope)
-      })
-      .catch(function (error) {
-        console.log('ServiceWroker registration failed: ', error)
-      })
-  })
-}
+import './style.css'
+import javascriptLogo from './javascript.svg'
+import viteLogo from '/vite.svg'
+import { setupCounter } from './counter.js'
 
-// Fetch users and cache them with Workbox
-if ('caches' in window) {
-  const usersUrl = 'https://jsonplaceholder.typicode.com/users'
+document.querySelector('#app').innerHTML = `
+  <div>
+    <a href="https://vitejs.dev" target="_blank">
+      <img src="${viteLogo}" class="logo" alt="Vite logo" />
+    </a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
+    </a>
+    <h1>Hello Vite!</h1>
+    <div class="card">
+      <button id="counter" type="button"></button>
+    </div>
+    <p class="read-the-docs">
+      Click on the Vite logo to learn more
+    </p>
+  </div>
+`
 
-  caches.match(usersUrl).then(function(response) {
-    if (response) {
-      return response
-    } else {
-      return fetch(usersUrl)
-        .then(function(response) {
-          const clonedResponse = response.clone()
-          caches.open('users').then(function(cache) {
-            cache.put(usersUrl, clonedResponse)
-          })
-          return response
-        })
-        .catch(function(error) {
-          console.log('Error fetching users: ', error)
-        })
-    }
-  }).then(function(response) {
-    response.json().then(function(users) {
-      const usersList = document.getElementById('users')
-      users.forEach(function(user) {
-        const listItem = document.createElement('li')
-        listItem.textContent = user.name
-        usersList.appendChild(listItem)
-      })
-    })
-  })
-}
+setupCounter(document.querySelector('#counter'))
