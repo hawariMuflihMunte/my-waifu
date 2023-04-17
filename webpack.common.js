@@ -3,16 +3,17 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/main.js'),
+  entry: path.resolve(__dirname, 'src/scripts/main.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundle.js'
+    filename: 'app.js',
+    clean: true
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        include: path.resolve(__dirname, 'src/stylesheet/'),
+        include: path.resolve(__dirname, 'src/'),
         use: [
           {
             loader: 'style-loader'
@@ -32,10 +33,6 @@ module.exports = {
       title: 'MyWaifu',
       template: path.resolve(__dirname, 'src/template/template.html'),
       filename: 'index.html',
-      meta: {
-        'viewport': 'width=device-width, initial-scale=1.0',
-        'theme-color': '#007bff'
-      }
     }),
     new CopyWebpackPlugin({
       patterns: [
