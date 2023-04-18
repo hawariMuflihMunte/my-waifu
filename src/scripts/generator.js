@@ -28,9 +28,20 @@ const Generator = {
       const waifuImage = await waifuImageUrl.json()
 
       const waifuResult = this.createWaifuImage(waifuImage.url)
-      console.log(waifuResult)
 
+      console.info(
+        '%cGenerator',
+        `
+          background: rgb(0, 212, 232);
+          color: navy;
+          padding: 2px;
+          border-radius: 3px
+        `,
+        `Waifu generated:\n${waifuImage.url}`
+      )
       document.getElementById(this._container).appendChild(waifuResult)
+
+      return true
     } catch (error) {
       console.log(error)
       return false
