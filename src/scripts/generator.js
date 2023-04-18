@@ -51,8 +51,6 @@ const Generator = {
     const waifuImageContainer = document.createElement('img')
     waifuImageContainer.src = src
     waifuImageContainer.loading = 'eager'
-    waifuImageContainer.style.objectFit = 'cover'
-    waifuImageContainer.style.objectFit = 'right top'
     waifuImageContainer.style.height = 'auto'
     waifuImageContainer.style.maxWidth = '100%'
 
