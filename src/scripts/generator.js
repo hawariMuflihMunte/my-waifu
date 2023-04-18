@@ -2,6 +2,7 @@ const Generator = {
   init ({
     button,
     api,
+    container,
     options = {
       type: 'sfw',
       category: 'waifu'
@@ -9,6 +10,7 @@ const Generator = {
   }) {
     this._button = button
     this._api = api
+    this._container = container
     this._options = options
 
     this._button.addEventListener('click', () => {
@@ -28,7 +30,7 @@ const Generator = {
       const waifuResult = this.createWaifuImage(waifuImage.url)
       console.log(waifuResult)
 
-      return waifuResult
+      document.getElementById(this._container).appendChild(waifuResult)
     } catch (error) {
       console.log(error)
       return false

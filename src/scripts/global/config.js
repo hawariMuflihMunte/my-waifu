@@ -5,7 +5,8 @@ const CONFIG = {
   GENERATOR_OPTIONS: {
     type: 'sfw', // safe-for-work 🤪 
     category: 'waifu'
-  }
+  },
+  GENERATOR_IMAGE_CONTAINER_ID: 'result'
 }
 
 export default CONFIG

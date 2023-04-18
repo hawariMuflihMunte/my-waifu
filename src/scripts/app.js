@@ -23,8 +23,6 @@ class App {
     // app
     this._appContainer.innerHTML = this._pageContent
 
-    this.getGeneratorResult()
-
     console.info(
       '%cApp',
       `
@@ -37,19 +35,19 @@ class App {
     )
   }
 
-  async getGeneratorResult () {
-    const generatorResultContainer = document.getElementById('result')
+  // async getGeneratorResult () {
+  //   const generatorResultContainer = document.getElementById('result')
 
-    try {
-      const result = await this._generatorResult
+  //   try {
+  //     const result = await this._generatorResult
 
-      generatorResultContainer.appendChild(result)
+  //     generatorResultContainer.appendChild(result)
 
-      console.log(result)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  //     console.log(result)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 }
 
 export default App
