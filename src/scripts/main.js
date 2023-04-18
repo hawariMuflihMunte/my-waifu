@@ -19,6 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
   Generator.init({
     button: document.getElementById(CONFIG.BUTTON_ID),
     api: CONFIG.BASE_API_URL,
+    container: CONFIG.GENERATOR_IMAGE_CONTAINER_ID,
     options: CONFIG.GENERATOR_OPTIONS
   })
 })
