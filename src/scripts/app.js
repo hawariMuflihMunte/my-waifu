@@ -2,15 +2,15 @@ class App {
   constructor ({
     bodyElement,
     appContainer,
-    apiUrl,
     bgUrl,
-    pageContent
+    pageContent,
+    generatorResult
   }) {
     this._bodyElement = bodyElement
     this._appContainer = appContainer
-    this._apiUrl = apiUrl
     this._bgUrl = bgUrl
     this._pageContent = pageContent
+    this._generatorResult = generatorResult
   }
 
   render() {
@@ -22,6 +22,8 @@ class App {
 
     // app
     this._appContainer.innerHTML = this._pageContent
+
+    this.getGeneratorResult()
 
     console.info(
       '%cApp',
@@ -35,32 +37,17 @@ class App {
     )
   }
 
-  async renderImage ({
-    type = 'sfw',
-    category = 'waifu'
-  }) {
-    const createWaifuImage = (src) => {
-      const waifuImageContainer = document.createElement('img')
-      waifuImageContainer.src = src
-      waifuImageContainer.loading = 'eager'
-      waifuImageContainer.style.objectFit = 'cover'
-      waifuImageContainer.style.objectFit = 'right top'
-      waifuImageContainer.style.height = 'auto'
-      waifuImageContainer.style.maxWidth = '100%'
-  
-      return waifuImageContainer
-    }
-    
+  async getGeneratorResult () {
+    const generatorResultContainer = document.getElementById('result')
+
     try {
-      const waifuImageUrl = await fetch(`${this._apiUrl}${type}/${category}`)
-      const waifuImage = await waifuImageUrl.json()
+      const result = await this._generatorResult
 
-      const waifuResult = createWaifuImage(waifuImage.url)
+      generatorResultContainer.appendChild(result)
 
-      return waifuResult
+      console.log(result)
     } catch (error) {
-      console.log(error)
-      return false
+      console.error(error)
     }
   }
 }

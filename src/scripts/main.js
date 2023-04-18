@@ -17,6 +17,8 @@ const app = new App({
 window.addEventListener('DOMContentLoaded', () => {
   app.render()
   Generator.init({
-    button: document.getElementById(CONFIG.BUTTON_ID)
+    button: document.getElementById(CONFIG.BUTTON_ID),
+    api: CONFIG.BASE_API_URL,
+    options: CONFIG.GENERATOR_OPTIONS
   })
 })
