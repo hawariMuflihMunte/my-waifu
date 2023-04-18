@@ -34,20 +34,6 @@ class App {
       'Successfully render page ✅'
     )
   }
-
-  // async getGeneratorResult () {
-  //   const generatorResultContainer = document.getElementById('result')
-
-  //   try {
-  //     const result = await this._generatorResult
-
-  //     generatorResultContainer.appendChild(result)
-
-  //     console.log(result)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
 }
 
 export default App
