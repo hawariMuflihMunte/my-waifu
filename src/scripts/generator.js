@@ -39,6 +39,8 @@ const Generator = {
         `,
         `Waifu generated:\n${waifuImage.url}`
       )
+
+      document.getElementById(this._container).innerHTML = ''
       document.getElementById(this._container).appendChild(waifuResult)
 
       return true
