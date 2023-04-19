@@ -1,4 +1,4 @@
-import CONFIG from "../global/CONFIG"
+import CONFIG from "../config/CONFIG"
 
 const PAGE = {
   index: `

@@ -2,7 +2,7 @@ import './swUtils'
 import '../stylesheet/tailwind.css'
 
 import App from './app'
-import CONFIG from './global/CONFIG'
+import CONFIG from './config/CONFIG'
 import PAGE from './page/page'
 import Generator from './generator'
 
